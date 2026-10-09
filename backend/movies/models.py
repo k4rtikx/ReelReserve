@@ -58,8 +58,8 @@ class Movie(Model):  # Defines the Movie table; each row = one movie in the cine
     rating           = DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)  # Column: audience score like 8.4 or 7.0; 3 digits total, 1 after decimal; OPTIONAL
     created_at       = DateTimeField(auto_now_add=True)                        # Column: timestamp auto-set to NOW when movie is first created — Django never lets you change this manually
 
-    class Meta:  # Inner class to set extra database-level settings for Movie
+    class Meta:  # You fetch movies, and Django automatically sorts them newest first. You don't need to specify the sorting every time.
         ordering = ['-release_date']  # Default sort: newest movies first (the '-' means descending / reverse order)
 
     def __str__(self):  # When you print a Movie object, show its title instead of "Movie object (1)"
-        return self.title  # e.g. prints "Inception"
+        return self.title  
